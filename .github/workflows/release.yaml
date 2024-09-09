@@ -44,6 +44,9 @@ jobs:
               with:
                   gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
                   passphrase: ${{ secrets.PASSPHRASE }}
+
+            - name: Get Env Variable GPG_TTY
+              run: echo $GPG_TTY
               
             - name: Run GoReleaser
               uses: goreleaser/goreleaser-action@v5
