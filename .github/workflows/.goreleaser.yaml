@@ -41,6 +41,8 @@ jobs:
               with:
                   gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
                   passphrase: ${{ secrets.PASSPHRASE }}
+            - name: Create annotation for build error
+              run: export GPG_TTY=$(tty)
             - name: Run GoReleaser
               uses: goreleaser/goreleaser-action@v5
               with:
