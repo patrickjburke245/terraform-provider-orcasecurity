@@ -50,20 +50,7 @@ jobs:
               with:
                 distribution: goreleaser
                 version: "v1.25.1"
-                args: release --snapshot
+                args: release --clean
               env:
                 GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
                 GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-            - name: Archive production artifacts
-              uses: actions/upload-artifact@v4
-              with:
-                name: dist-without-markdown
-                path: |
-                  dist
-                  !dist/**/*.md
-            - name: Archive code coverage results
-              uses: actions/upload-artifact@v4
-              with:
-                name: code-coverage-report
-                path: output/test/code-coverage.html
